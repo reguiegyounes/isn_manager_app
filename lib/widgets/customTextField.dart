@@ -10,7 +10,12 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 30),
-      child: TextField(
+      child: TextFormField(
+        validator: (value) {
+          if (value.isEmpty) {
+            return hint + ' is empty';
+          }
+        },
         cursorColor: primaryColor,
         decoration: InputDecoration(
             prefixIcon: Icon(
@@ -22,6 +27,9 @@ class CustomTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(5),
                 borderSide: BorderSide(color: primaryColor)),
             focusedBorder: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(5),
+                borderSide: BorderSide(color: primaryColor)),
+            border: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(5),
                 borderSide: BorderSide(color: primaryColor))),
       ),
