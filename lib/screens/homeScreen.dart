@@ -41,7 +41,7 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.popAndPushNamed(context, '/login');
+          Navigator.pushNamed(context, '/login');
           print('remove token');
           Auth.removeToken();
         },
