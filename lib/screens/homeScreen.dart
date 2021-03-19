@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:isn_manager/services/auth.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({Key key, this.title}) : super(key: key);
 
   final String title;
-
+  static String id = '/home';
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -22,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title ?? ''),
       ),
       body: Center(
         child: Column(
@@ -39,7 +40,11 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: () {
+          Navigator.popAndPushNamed(context, '/login');
+          print('remove token');
+          Auth.removeToken();
+        },
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
